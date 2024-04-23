@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "target": "es6",
+        "module": "amd",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outFile": "app.tabidoo.cloud/javascript/main.js"
+    },
+    "include": [
+        "src/**/*.ts"
+, "src/MyWidgets/script.js"    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

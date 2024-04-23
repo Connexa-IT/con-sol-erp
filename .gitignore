@@ -1,0 +1,4 @@
+dist/
+app\.tabidoo\.cloud/
+.vscode/
+.env
