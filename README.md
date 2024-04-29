@@ -23,5 +23,5 @@ In order to update widgets in tabidoo one can use
 ```
 chmod u+x ./upload_scripting_extension.sh
 brew install entr
-find ./ -type f \( -iname \*.js -o -iname \*.ts \) | entr bash ./upload_scripting_extension.sh
+find ./src -type f \( -iname \*.js -o -iname \*.ts \) | entr bash ./upload_scripting_extension.sh
 ```

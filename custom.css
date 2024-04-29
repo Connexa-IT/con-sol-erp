@@ -1,16 +1,92 @@
-i {
+/* i {
     color: red;
 }
-
-#comm-lead-history ul, #comm-lead-history ul li {
+ */
+ 
+ul.communication-history,
+ul.communication-history li,
+ul.contact-details,
+ul.contact-details li {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: block;
+    position: relative;
 }
 
-#comm-lead-history ul li {
-    border: 1px dotted #aaa;
-    margin-bottom: 2rem;
-    padding: .5rem 1rem;
+ul.communication-history {
+    border-left: 4px solid #5d0b0b;
+    padding: .5em 0;
+}
+
+ul.communication-history li {
+    padding: 10px 0;
+    margin-left: 15px;
+}
+
+ul.communication-history li:last-child {
+    border-bottom: none;
+}
+
+ul.communication-history li:before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    position: absolute;
+    left: -26px;
+    background-color: #5d0b0b;
+    border: 2px solid white;
+}
+
+ul.communication-history li:hover {
+    background-color: #efe2e2;
+    border-radius: 1em;
+
+}
+
+ul.communication-history li .modified {
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    margin: 0 10px 5px 10px;
+}
+
+ul.communication-history li .types {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+ul.communication-history li .outcome {
+    display: block;
+    padding: .3em 1em;
+    border-radius: .3em;
+    background-color: #eee;
+    color: #333;
+    cursor: pointer;
+    border: 1px solid white;
+    margin: 0 10px;
+}
+
+ul.communication-history li p {
+    display: block;
+    margin: 0 10px 10px 10px;
+}
+
+ul.contact-details li {
+    margin-bottom: 1em;
+    padding: .3em 2em;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;  
+    box-sizing: border-box;  
+    background-color: #f9f9f9;
+    border: 1px solid #ddd; 
+    border-radius: .5em;
+}
+
+ul.contact-details li i {
+    vertical-align: middle;
+    margin-right: 1em;
 }
