@@ -13,6 +13,14 @@ In order to be able to develop local changes in Tabidoo JS/Stylesheet it's best 
 
 ## Scripts
 
-Run `npm start`
+To automatically watch for changes in `./widgets` directory and sync every change you do, run:
 
-This will automatically watch for changes in `./widgets` directory and sync every change you do.
+```bash
+npm run sync:watch
+```
+
+If you want to do one-time sync, run:
+
+```bash
+npm run sync
+```
