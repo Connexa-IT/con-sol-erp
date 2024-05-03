@@ -1,4 +1,4 @@
-dist/
-app\.tabidoo\.cloud/
-.vscode/
+node_modules/
+.OLD/
 .env
+.vscode/

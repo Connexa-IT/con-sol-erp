@@ -2,7 +2,6 @@
 
 In order to be able to develop local changes in Tabidoo JS/Stylesheet it's best to use local override
 
-
 ## Stylesheets
 
 1. Open Chrome DevTools (have better capabilities compared to e.g. Safari)
@@ -12,16 +11,8 @@ In order to be able to develop local changes in Tabidoo JS/Stylesheet it's best 
 5. Make file link to map needed destination, e.g. `ln  ../../custom.css custom.css\?v=2404130802`
 6. Changes in styles will be immediatelly propagated into the website
 
-## Typescript
+## Scripts
 
-1. Run `tsc --watch` 
+Run `npm start`
 
-## Scripting extension
-
-In order to update widgets in tabidoo one can use
-
-```
-chmod u+x ./upload_scripting_extension.sh
-brew install entr
-find ./src -type f \( -iname \*.js -o -iname \*.ts \) | entr bash ./upload_scripting_extension.sh
-```
+This will automatically watch for changes in `./widgets` directory and sync every change you do.
