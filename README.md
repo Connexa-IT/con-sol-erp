@@ -24,3 +24,5 @@ If you want to do one-time sync, run:
 ```bash
 npm run sync
 ```
+
+__Note__: Don't forget to run `npm install` after downloading repository to install all dependencies.
