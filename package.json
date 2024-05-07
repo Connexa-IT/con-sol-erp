@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "sync": "ts-node --esm lib/syncWidgets.ts",
-    "sync:watch": "nodemon --watch widgets --exec \"ts-node --esm lib/syncWidgets.ts\""
+    "sync": "ts-node lib/syncWidgets.ts",
+    "sync:watch": "nodemon --watch widgets --exec \"ts-node lib/syncWidgets.ts\""
   },
   "keywords": [],
   "author": "",
@@ -13,5 +13,11 @@
     "dotenv": "^16.4.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
