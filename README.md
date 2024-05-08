@@ -2,6 +2,12 @@
 
 In order to be able to develop local changes in Tabidoo JS/Stylesheet it's best to use local override
 
+To start auto build of css and auto upload of javascript code, run:
+
+```bash
+npm run watch
+```
+
 ## Stylesheets
 
 1. Open Chrome DevTools (have better capabilities compared to e.g. Safari)
@@ -10,6 +16,14 @@ In order to be able to develop local changes in Tabidoo JS/Stylesheet it's best 
 4. To map the responses to the files the path need to match perfectly, e.g. `app.tabidoo.cloud/branding/custom.css?v=2404130802`
 5. Make file link to map needed destination, e.g. `ln  ../../custom.css custom.css\?v=2404130802`
 6. Changes in styles will be immediatelly propagated into the website
+
+### Build custom.css stylesheet
+
+To build `custom.css`, run:
+
+```bash
+npm run tailwind:build
+```
 
 ## Scripts
 
@@ -25,4 +39,4 @@ If you want to do one-time sync, run:
 npm run sync
 ```
 
-__Note__: Don't forget to run `npm install` after downloading repository to install all dependencies.
+**Note**: Don't forget to run `npm install` after downloading repository to install all dependencies.

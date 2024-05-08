@@ -3,21 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "watch": "concurrently --kill-others \"npm run tailwind:watch\" \"npm run sync:watch\"",
     "sync": "ts-node lib/syncWidgets.ts",
-    "sync:watch": "nodemon --watch widgets --exec \"ts-node lib/syncWidgets.ts\""
+    "sync:watch": "nodemon --watch widgets --exec \"ts-node lib/syncWidgets.ts\"",
+    "tailwind:build": "npx tailwindcss -i ./css/base.css -o ./custom.css --minify",
+    "tailwind:watch": "npx tailwindcss -i ./css/base.css -o ./custom.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^8.2.2",
     "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0",
+    "tailwindcss": "^3.4.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.0"
   }
 }
