@@ -27,10 +27,10 @@ npm run tailwind:build
 
 ### How to create and preview components
 
-In order to be able to tailwind run on your localhost you need to run a web server. That can be easily done by running:
+In order to be able to tailwind run on your `localhost` you need to run a web server. That can be easily done by running:
 
 ```bash
-npx server components/
+npx serve components/
 ```
 
 Navigate to provided url (usually http://localhost:3000) and select file to preview.
@@ -41,6 +41,8 @@ tool for automatic prefixing: https://github.vue.tailwind-prefix.cbass.dev/
 Once you commit and push your changes into `main` branch, Github Action will build and publish file on following url:
 
 https://cdn.synapto.cloud/tabidoo/css/custom.css
+
+**Note**: build should take under 1minute. You can watch status of build here: https://github.com/Connexa-IT/con-sol-erp/actions
 
 ## Scripts
 
