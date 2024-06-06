@@ -24,6 +24,9 @@ jobs:
       - name: Build Tailwind CSS
         run: npm run tailwind:build
 
+      - name: Show custom.css
+        run: cat ./custom.css
+
       - id: auth
         uses: google-github-actions/auth@v2
         with:
@@ -37,8 +40,8 @@ jobs:
         run: |
           gsutil cp ./custom.css gs://tbd_static/tabidoo/css/
 
-      - name: Invalidate Cache
-        run: |
-          gcloud compute url-maps invalidate-cdn-cache tbds \
-            --path "/tabidoo/css/custom.css" \
-            --project "${{ secrets.GCP_PROJECT_ID }}"
+      # - name: Invalidate Cache
+      #   run: |
+      #     gcloud compute url-maps invalidate-cdn-cache tbds \
+      #       --path "/tabidoo/css/custom.css" \
+      #       --project "${{ secrets.GCP_PROJECT_ID }}"
