@@ -25,6 +25,23 @@ To build `custom.css`, run:
 npm run tailwind:build
 ```
 
+### How to create and preview components
+
+In order to be able to tailwind run on your localhost you need to run a web server. That can be easily done by running:
+
+```bash
+npx server components/
+```
+
+Navigate to provided url (usually http://localhost:3000) and select file to preview.
+
+All tailwind classes needs to have prefix `tw-`. To add prefix to your code, you can use following
+tool for automatic prefixing: https://github.vue.tailwind-prefix.cbass.dev/
+
+Once you commit and push your changes into `main` branch, Github Action will build and publish file on following url:
+
+https://cdn.synapto.cloud/tabidoo/css/custom.css
+
 ## Scripts
 
 To automatically watch for changes in `./widgets` directory and sync every change you do, run:
