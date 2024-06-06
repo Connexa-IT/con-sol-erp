@@ -1,0 +1,38 @@
+name: Upload custom.css to GCP Bucket
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload-to-gcp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Tailwind CSS
+        run: npm run tailwind:build
+
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: "${{ secrets.GCP_PROJECT_ID }}"
+          credentials_json: "${{ secrets.GCP_SA_KEY }}"
+
+      - name: Set up Cloud SDK
+        uses: "google-github-actions/setup-gcloud@v2"
+
+      - name: Upload custom.css to GCP Bucket
+        run: |
+          gsutil cp ./custom.css gs://tbd_static/tabidoo/css/
