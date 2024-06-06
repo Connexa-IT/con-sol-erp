@@ -36,3 +36,9 @@ jobs:
       - name: Upload custom.css to GCP Bucket
         run: |
           gsutil cp ./custom.css gs://tbd_static/tabidoo/css/
+
+      - name: Invalidate Cache
+        run: |
+          gcloud compute url-maps invalidate-cdn-cache tbds \
+            --path "/tabidoo/css/custom.css" \
+            --project "${{ secrets.GCP_PROJECT_ID }}"
