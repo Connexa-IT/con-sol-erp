@@ -1,0 +1,8 @@
+apps:
+  solarcompanyvzor:
+    widgets:
+      - name: MyWidgets
+        path: widgets/MyWidgets
+      - name: TestWidget
+        path: widgets/TestWidget
+    apiTokenEnv: SOLARY_API_TOKEN

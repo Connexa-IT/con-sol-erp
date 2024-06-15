@@ -46,7 +46,10 @@ https://cdn.synapto.cloud/tabidoo/css/custom.css
 
 ## Scripts
 
-To automatically watch for changes in `./widgets` directory and sync every change you do, run:
+In `config.yaml` there is configuration of widgets. Basically it maps widgets to different apps and widgets
+can be shared between apps.
+
+To automatically watch for changes of widgets and sync everytime you change something:
 
 ```bash
 npm run sync:watch

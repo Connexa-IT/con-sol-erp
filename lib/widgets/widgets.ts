@@ -1,8 +1,6 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 
-const WIDGET_DIR = "./widgets";
-
 interface Widget {
   name: string;
   dts: string;
@@ -10,28 +8,8 @@ interface Widget {
   script: string;
 }
 
-export async function getLocalWidgets(
-  baseDir: string = WIDGET_DIR
-): Promise<Widget[]> {
-  const directories = await fs
-    .readdir(baseDir, { withFileTypes: true })
-    .then((files) => files.filter((file) => file.isDirectory()))
-    .then((files) => files.map((file) => file.name));
-
-  const widgets: Widget[] = [];
-  for (const dir of directories) {
-    const widget = await getWidgetForDir(path.join(baseDir, dir), dir);
-    if (widget) {
-      widgets.push(widget);
-    }
-  }
-
-  return widgets;
-}
-
-async function getWidgetForDir(
-  dirPath: string,
-  dirName: string
+export async function getWidgetForDir(
+  dirPath: string
 ): Promise<Widget | undefined> {
   const dtsPath = path.join(dirPath, "d.ts");
   const scriptPath = path.join(dirPath, "script.js");
@@ -51,7 +29,6 @@ async function getWidgetForDir(
     }
 
     return {
-      name: dirName,
       dts: dtsContent,
       script: scriptContent,
       interface: interfaceName,
