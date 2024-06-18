@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { prefix: 'tw-' }
+    </script>
+</head>
+
+<body>
+    <div class="{{TBD-RANDOM-ID}}-wrap">
+        <!-- Tlačítka -->
+        <div class="tw-flex gap-4">
+            <button type="button" class="tw-rounded-md tw-bg-indigo-600 tw-px-3.5 tw-py-2.5 tw-text-base tw-font-semibold tw-text-white tw-shadow-sm hover:tw-bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Vyřešit úkol</button>
+            <button type="button" class="tw-rounded-md tw-bg-indigo-600 tw-px-3.5 tw-py-2.5 tw-text-base tw-font-semibold tw-text-white tw-shadow-sm hover:tw-bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Zrušit úkol</button>
+            <button type="button" class="tw-rounded-md tw-bg-indigo-600 tw-px-3.5 tw-py-2.5 tw-text-base tw-font-semibold tw-text-white tw-shadow-sm hover:tw-bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Přidat do kalendáře</button>
+        </div>
+    
+        <div class="tw-flex gap-4 tw-mt-6">
+        <!-- Název úkolu -->
+            <div class="tw-flex-initial tw-w-6/12">
+                <label for="task_name" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Název úkolu</label>
+                <div class="tw-mt-2">
+                    <input type="text" name="task_name" id="task_name" class="tw-px-3 tw-block tw-w-full tw-rounded-md tw-border-0 tw-py-1.5 tw-text-gray-900 tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300 placeholder:tw-text-gray-400 focus:tw-ring-2 focus:tw-ring-inset focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6" placeholder="">
+                </div>
+            </div>
+        <!-- Zadáno -->
+            <div class="tw-flex-initial tw-w-3/12">
+                <label for="created" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Zadáno</label>
+                <div class="tw-mt-2">
+                    <input type="datetime-local" name="created" id="created" class="tw-ps-2 tw-block tw-w-full tw-rounded-md tw-border-0 tw-py-1.5 tw-text-gray-900 tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300 placeholder:tw-text-gray-400 focus:tw-ring-2 focus:tw-ring-inset focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6">
+                </div>
+            </div>
+        <!-- Deadline -->
+            <div class="tw-flex-initial tw-w-3/12">
+                <label for="deadline" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Deadline</label>
+                <div class="tw-mt-2">
+                    <input type="datetime-local" name="deadline" id="deadline" class="tw-ps-2 tw-block tw-w-full tw-rounded-md tw-border-0 tw-py-1.5 tw-text-gray-900 tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300 placeholder:tw-text-gray-400 focus:tw-ring-2 focus:tw-ring-inset focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6">
+                </div>
+            </div>
+        </div>
+    
+        <!-- Kdo řeší -->
+        <div class="tw-mt-6">
+                <label for="solver" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Kdo řeší</label>
+                <select id="solver" name="solver" class="tw-mt-2 tw-block  tw-w-4/12 tw-rounded-md tw-border-0 tw-py-1.5 tw-pl-3 tw-pr-10 tw-text-gray-900 tw-ring-1 tw-ring-inset tw-ring-gray-300 focus:tw-ring-2 focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6">
+                    <option value selected></option>
+                </select>
+        </div>
+    
+        <!-- Klient / Lead -->
+        <div class="tw-mt-6">
+                <label for="client-lead" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Klient / Lead</label>
+                <select id="client-lead" name="client-lead" class="tw-mt-2 tw-block  tw-w-4/12 tw-rounded-md tw-border-0 tw-py-1.5 tw-pl-3 tw-pr-10 tw-text-gray-900 tw-ring-1 tw-ring-inset tw-ring-gray-300 focus:tw-ring-2 focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6">
+                    <option value selected></option>
+                </select>
+        </div>
+    
+        <!-- Status úkolu -->
+        <div class="tw-mt-6">
+                <label for="status" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Status úkolu</label>
+                <select id="status" name="status" class="tw-mt-2 tw-block  tw-w-4/12 tw-rounded-md tw-border-0 tw-py-1.5 tw-pl-3 tw-pr-10 tw-text-gray-900 tw-ring-1 tw-ring-inset tw-ring-gray-300 focus:tw-ring-2 focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6">
+                    <option>Zadáno</option>
+                    <option>V řešení</option>
+                    <option>Po deadlinu!</option>
+                    <option>Hotovo</option>
+                    <option>Zrušeno</option>
+                </select>
+        </div>
+    
+        <!-- Popis úkolu -->
+        <div class="tw-mt-6">
+                <label for="comment" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Popis úkolu</label>
+                <div class="tw-mt-2">
+                    <textarea rows="4" name="comment" id="comment" class="tw-px-3 tw-block tw-w-7/12 tw-rounded-md tw-border-0 tw-py-1.5 tw-text-gray-900 tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300 placeholder:tw-text-gray-400 focus:tw-ring-2 focus:tw-ring-inset focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6"></textarea>
+                </div>
+        </div>
+    
+        <div class="tw-flex tw-mt-6 gap-4">
+            <!-- Kdo vyřešil -->
+            <div class="tw-flex-initial tw-w-6/12">
+                <label for="solved_by" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Kdo vyřešil</label>
+                <select id="solved_by" name="solved_by" class="tw-mt-2 tw-block  tw-w-full tw-rounded-md tw-border-0 tw-py-1.5 tw-pl-3 tw-pr-10 tw-text-gray-900 tw-ring-1 tw-ring-inset tw-ring-gray-300 focus:tw-ring-2 focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6">
+                    <option value selected></option>
+                </select>
+            </div>
+    
+            <!-- Kdy vyřešeno -->
+            <div class="tw-flex-initial tw-w-3/12">
+                <label for="solved_date" class="tw-block tw-text-base tw-leading-6 tw-text-gray-900">Kdy vyřešeno</label>
+                <div class="tw-mt-2">
+                    <input type="datetime-local" name="solved_date" id="solved_date" class="tw-ps-2 tw-block tw-w-full tw-rounded-md tw-border-0 tw-py-1.5 tw-text-gray-900 tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-gray-300 placeholder:tw-text-gray-400 focus:tw-ring-2 focus:tw-ring-inset focus:tw-ring-indigo-600 sm:tw-text-base sm:tw-leading-6" placeholder="you@example.com">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
