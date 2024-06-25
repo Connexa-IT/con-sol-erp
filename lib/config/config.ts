@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import { parse } from "yaml";
+import { error } from "../util/logger";
 
 export interface WidgetConfig {
   name: string;
@@ -23,7 +24,7 @@ export function loadConfig(filePath: string): Config {
     const data = parse(fileContents) as Config;
     return data;
   } catch (e) {
-    console.error(`Failed to load config file: ${e}`);
+    error(`Failed to load config file: ${e}`);
     throw e;
   }
 }

@@ -2,14 +2,21 @@ import "dotenv/config";
 import { TabidooApi } from "./tabidoo/api";
 import { getWidgetForDir } from "./widgets/widgets";
 import { loadConfig, WidgetConfig } from "./config/config";
+import { log, success, important, error, warn } from "./util/logger";
 
 async function syncWidgetsForApp(
+  appName: string,
   widgetsFromConfig: WidgetConfig[],
   api: TabidooApi
 ) {
-  console.log("Syncing widgets...");
+  log(`Syncing widgets for ${appName}...`);
 
   const { data } = await api.getCustomScripts();
+
+  if (!data) {
+    error(`No data returned. Application ${appName} do not exists?`);
+    return;
+  }
 
   const toUpdate = data.filter((script) => {
     const widget = widgetsFromConfig.find((w) => w.name === script.fields.name);
@@ -21,15 +28,15 @@ async function syncWidgetsForApp(
     return script === undefined;
   });
 
-  console.log(`${toUpdate.length} widgets to update`);
-  console.log(`${toCreate.length} widgets to create`);
+  log(`${toUpdate.length} widgets to update`);
+  log(`${toCreate.length} widgets to create`);
 
   for (const widget of toCreate) {
-    console.log(`Creating widget ${widget.name}`);
+    log(`Creating widget ${widget.name}`);
 
     const localWidget = await getWidgetForDir(widget.path);
     if (!localWidget) {
-      console.warn(
+      warn(
         `Unable to load widget ${widget.name} in ${widget.path}. Skipping...`
       );
       continue;
@@ -56,13 +63,13 @@ async function syncWidgetsForApp(
     }
     const localWidget = await getWidgetForDir(widgetFromConfig.path);
     if (!localWidget) {
-      console.warn(
+      warn(
         `Unable to load widget ${widgetFromConfig.name} in ${widgetFromConfig.path}. Skipping...`
       );
       continue;
     }
 
-    console.log(`Updating widget ${localWidget.name} (${widget.id})`);
+    log(`Updating widget ${widgetFromConfig.name} (${widget.id})`);
     await api.updateCustomScript(widget.id, {
       fields: {
         name: localWidget.name,
@@ -80,14 +87,12 @@ async function start() {
   const config = loadConfig(process.env.CONFIG_PATH || "config.yaml");
 
   for (const appName in config.apps) {
-    console.log(`Starting to sync widgets for ${appName}`);
+    important(`Starting to sync widgets for ${appName}`);
     const appConfig = config.apps[appName];
 
     const token = process.env[appConfig.apiTokenEnv];
     if (!token) {
-      console.error(
-        `Missing API token ${appConfig.apiTokenEnv} for ${appName}`
-      );
+      error(`Missing API token ${appConfig.apiTokenEnv} for ${appName}`);
       process.exit(1);
     }
 
@@ -98,13 +103,13 @@ async function start() {
 
     const apiReady = await api.ping();
     if (!apiReady) {
-      console.error(`Tabidoo API does not respond. Exiting...`);
+      error(`Tabidoo API does not respond. Exiting...`);
       process.exit(1);
     }
 
-    await syncWidgetsForApp(appConfig.widgets, api);
+    await syncWidgetsForApp(appName, appConfig.widgets, api);
 
-    console.log(`Finished sync widgets for ${appName}`);
+    success(`Finished sync widgets for ${appName}`);
   }
 }
 

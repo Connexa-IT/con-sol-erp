@@ -1,5 +1,6 @@
 import * as fs from "fs/promises";
 import * as path from "path";
+import { warn } from "../util/logger";
 
 interface Widget {
   name: string;
@@ -22,9 +23,7 @@ export async function getWidgetForDir(
     const interfaceName = dtsContent.match(/interface (\w+)/)?.[1] || undefined;
 
     if (interfaceName === undefined) {
-      console.warn(
-        `Unable to get interface name for widget ${dirPath}. Skipping...`
-      );
+      warn(`Unable to get interface name for widget ${dirPath}. Skipping...`);
       return undefined;
     }
 
@@ -34,7 +33,7 @@ export async function getWidgetForDir(
       interface: interfaceName,
     } as Widget;
   } catch (error: any) {
-    console.warn(
+    warn(
       `Error while processing widget ${dirPath}: ${error.message}. Skipping...`
     );
   }

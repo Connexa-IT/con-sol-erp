@@ -1,3 +1,4 @@
+import { error } from "../util/logger";
 import {
   CustomScriptResponse,
   ResponsePayload,
@@ -31,8 +32,8 @@ export class TabidooApi {
         headers: this.buildHeaders(),
       });
       return response.status === 200;
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      error(e);
       return false;
     }
   }
@@ -62,7 +63,7 @@ export class TabidooApi {
     if (response.status === 200) {
       return true;
     }
-    console.error(response.status, await response.text());
+    error(response.status, await response.text());
     return false;
   }
 
@@ -83,7 +84,7 @@ export class TabidooApi {
     if (response.status === 200) {
       return true;
     }
-    console.error(response.status, await response.text());
+    error(response.status, await response.text());
     return false;
   }
 
