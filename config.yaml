@@ -1,8 +1,14 @@
 apps:
-  solarcompanyvzor:
+  dd6b82aa-049f-47f3-a311-96c3fc1e93a5:
     widgets:
       - name: MyWidgets
         path: widgets/MyWidgets
       - name: TestWidget
         path: widgets/TestWidget
+      - name: LeadStatusPage
+        path: widgets/LeadStatusPage
+      - name: ClientStatusPage
+        path: widgets/ClientStatusPage
+      - name: Ukoly
+        path: widgets/Ukoly
     apiTokenEnv: SOLARY_API_TOKEN
